@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"strings"
 	"text/template"
-	"json"
+	"encoding/json"
 	"bytes"
 
 	bp "github.com/cloudfoundry/libbuildpack"
