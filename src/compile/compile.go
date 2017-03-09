@@ -92,6 +92,12 @@ func (sc *StaticfileCompiler) Compile() error {
 		return err
 	}
 
+	err = sc.InstallDynatraceOneAgent()
+        if err != nil {
+                sc.Compiler.Log.Error("Unable to install Dynatrace OneAgent: %s", err.Error())
+                return err
+        }
+
 	err = sc.WriteProfileD()
 	if err != nil {
 		sc.Compiler.Log.Error("Could not write .profile.d script: %s", err.Error())
@@ -301,6 +307,10 @@ func (sc *StaticfileCompiler) generateNginxConf() (string, error) {
 		return "", err
 	}
 	return buffer.String(), nil
+}
+
+func (sc *StaticfileCompiler) InstallDynatraceOneAgent() (string, error) {
+	return 'TEST' + os.Getenv("testenv")
 }
 
 func (sc *StaticfileCompiler) WriteProfileD() error {
