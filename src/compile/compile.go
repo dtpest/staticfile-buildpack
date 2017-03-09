@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"strings"
 	"text/template"
-
+	"json"
 	"bytes"
 
 	bp "github.com/cloudfoundry/libbuildpack"
@@ -308,7 +308,7 @@ func (sc *StaticfileCompiler) generateNginxConf() (string, error) {
 func (sc *StaticfileCompiler) InstallDynatraceOneAgent() {
         var dat map[string]interface{}
 	byt := []byte(os.Getenv("VCAP_SERVICES"))
-	if err := json.Unmarshal(byt, &dat); err != nil {        panic(err)    }    fmt.Println(dat)	
+	if err := json.Unmarshal(byt, &dat); err != nil {        panic(err)    }    	
 	sc.Compiler.Log.Info("TEST%s",dat["user-provided"][0]["credentials"]["server"])
 }
 
