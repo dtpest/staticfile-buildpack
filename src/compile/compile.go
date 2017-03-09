@@ -310,7 +310,7 @@ func (sc *StaticfileCompiler) generateNginxConf() (string, error) {
 }
 
 func (sc *StaticfileCompiler) InstallDynatraceOneAgent() (string, error) {
-	return 'TEST' + os.Getenv("testenv")
+	return "TEST" + os.Getenv("testenv")
 }
 
 func (sc *StaticfileCompiler) WriteProfileD() error {
