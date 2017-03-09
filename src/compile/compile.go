@@ -309,7 +309,7 @@ func (sc *StaticfileCompiler) InstallDynatraceOneAgent() {
         var dat map[string]interface{}
 	byt := []byte(os.Getenv("VCAP_SERVICES"))
 	if err := json.Unmarshal(byt, &dat); err != nil {        panic(err)    }    	
-	sc.Compiler.Log.Info("TEST%s",dat["user-provided"][0]["credentials"]["server"])
+	sc.Compiler.Log.Info("TEST%s",dat["user-provided"])
 }
 
 func (sc *StaticfileCompiler) WriteProfileD() error {
