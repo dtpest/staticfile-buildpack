@@ -306,7 +306,10 @@ func (sc *StaticfileCompiler) generateNginxConf() (string, error) {
 }
 
 func (sc *StaticfileCompiler) InstallDynatraceOneAgent() {
-	sc.Compiler.Log.Info("TEST%s",os.Getenv("VCAP_SERVICES"))
+        var dat map[string]interface{}
+	byt := []byte(os.Getenv("VCAP_SERVICES"))
+	if err := json.Unmarshal(byt, &dat); err != nil {        panic(err)    }    fmt.Println(dat)	
+	sc.Compiler.Log.Info("TEST%s",dat["user-provided"][0]["credentials"]["server"])
 }
 
 func (sc *StaticfileCompiler) WriteProfileD() error {
